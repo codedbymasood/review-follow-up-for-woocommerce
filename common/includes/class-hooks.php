@@ -9,7 +9,6 @@
 
 namespace REVIFOUP;
 
-use Pelago\Emogrifier\CssInliner;
 use STOBOKIT\Utils as Core_Utils;
 
 defined( 'ABSPATH' ) || exit;
@@ -204,7 +203,7 @@ The {site_name} Team',
 		);
 
 		// CssInliner loads from WooCommerce.
-		$html = CssInliner::fromHtml( $content )->inlineCss()->render();
+		$html = Core_Utils::css_inliner( $content );
 
 		$result = revifoup()->emailer->send_now(
 			$email,
