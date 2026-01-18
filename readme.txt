@@ -1,9 +1,9 @@
 === Review Follow-Up for WooCommerce ===
 Tags: woocommerce, reviews, email automation, social proof, customer feedback
 Requires at least: 6.6
-Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Tested up to: 6.9
+Stable tag: 1.1.0
 License: GPL-3.0+
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -148,6 +148,10 @@ If you encounter issues after an update, flush the permalinks by going to WordPr
 8. CRON scheduler dashboard monitoring automated email sending.
 
 == Changelog ==
+= 1.1 2025-01-18 =
+* Update - WP 6.9 and WC 10.4.3 Compatibility added.
+* Update - Translation string updated.
+* Fix - CSS Inliner raises error on WooCommerce older version.
 
 = 1.0.0 2025-10-31 =
 * Initial Release

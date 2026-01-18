@@ -4,7 +4,7 @@
  *
  * @package review-follow-up-for-wooCommerce\core\
  * @author Store Boost Kit <storeboostkit@gmail.com>
- * @version 1.0
+ * @version 1.1
  */
 
 namespace STOBOKIT;
@@ -17,18 +17,40 @@ defined( 'ABSPATH' ) || exit;
 class Utils {
 
 	/**
+	 * CSS Inliner.
+	 *
+	 * @param string $html Email content.
+	 * @return string
+	 */
+	public static function css_inliner( $html ) {
+		if ( class_exists( 'Automattic\WooCommerce\Vendor\Pelago\Emogrifier\CssInliner' ) ) {
+			return \Automattic\WooCommerce\Vendor\Pelago\Emogrifier\CssInliner::fromHtml( $html )->inlineCss()->render();
+		} elseif ( class_exists( 'Pelago\Emogrifier\CssInliner' ) ) {
+			return \Pelago\Emogrifier\CssInliner::fromHtml( $html )->inlineCss()->render();
+		}
+
+		return $html;
+	}
+
+	/**
 	 * Check is valid timestamp.
 	 *
 	 * @param string $timestamp Timestamp.
 	 * @return boolean
 	 */
 	public static function is_timestamp( $timestamp = '' ) {
+		// Check if it's numeric.
 		if ( ! is_numeric( $timestamp ) ) {
-				return false;
+			return false;
 		}
 
-		$timestamp_str = (string) $timestamp;
-		return strlen( $timestamp_str ) === 10 && ctype_digit( $timestamp_str );
+		// Try to create a DateTime object.
+		try {
+			$date = new DateTime( '@' . $timestamp );
+			return true;
+		} catch ( Exception $e ) {
+			return false;
+		}
 	}
 
 	/**

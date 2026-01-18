@@ -130,8 +130,6 @@ final class REVIFOUP {
 	 */
 	private function load_dependencies() {
 		$this->load_common();
-
-		require REVIFOUP_PATH . '/common/admin/init-update.php';
 	}
 
 	/**
@@ -150,10 +148,9 @@ final class REVIFOUP {
 		$onboarding_initialized = true;
 
 		$steps = array(
-			'welcome'            => 'Welcome',
-			'license-activation' => 'Activate License',
-			'settings'           => 'General Setup',
-			'finish'             => 'Finish',
+			'welcome'  => 'Welcome',
+			'settings' => 'General Setup',
+			'finish'   => 'Finish',
 		);
 
 		new \STOBOKIT\Onboarding(
